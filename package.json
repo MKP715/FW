@@ -1,0 +1,16 @@
+{
+  "name": "francineward-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website of Francine D. Ward — attorney, author and speaker. Static site built for GitHub Pages.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "serve": "npx --yes serve docs -l 4173",
+    "dev": "node scripts/build.mjs && npx --yes serve docs -l 4173",
+    "images": "node scripts/make-images.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
