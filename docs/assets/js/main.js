@@ -40,23 +40,43 @@
 
   if (toTop) toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }); });
 
+  /* ---------- Skip link (works even under the 404 page's <base>) ---------- */
+  var skip = $(".skip-link");
+  if (skip) skip.addEventListener("click", function (e) {
+    var m = document.getElementById("main");
+    if (!m) return;
+    e.preventDefault();
+    m.setAttribute("tabindex", "-1");
+    m.focus();
+    m.scrollIntoView();
+  });
+
   /* ---------- Mobile navigation ---------- */
   var toggle = $(".nav-toggle");
   if (toggle) {
-    var closeNav = function () {
+    // While the full-screen menu is open, keep focus and scrolling inside it.
+    var setInert = function (on) {
+      [$(".skip-link"), $("main"), $(".site-footer"), toTop].forEach(function (el) { if (el) el.inert = on; });
+      doc.classList.toggle("nav-lock", on);
+    };
+    var closeNav = function (restoreFocus) {
+      var wasOpen = document.body.classList.contains("nav-open");
       document.body.classList.remove("nav-open");
       toggle.setAttribute("aria-expanded", "false");
       toggle.setAttribute("aria-label", "Open menu");
+      setInert(false);
+      if (wasOpen && restoreFocus === true) toggle.focus();
     };
     toggle.addEventListener("click", function () {
       var open = document.body.classList.toggle("nav-open");
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      setInert(open);
       if (open && header) header.classList.remove("is-hidden");
     });
-    $$(".nav a").forEach(function (a) { a.addEventListener("click", closeNav); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeNav(); });
-    window.addEventListener("resize", function () { if (window.innerWidth > 1120) closeNav(); });
+    $$(".nav a").forEach(function (a) { a.addEventListener("click", function () { closeNav(false); }); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && document.body.classList.contains("nav-open")) closeNav(true); });
+    window.addEventListener("resize", function () { if (window.innerWidth > 1160) closeNav(false); });
   }
 
   /* ---------- Reveal on scroll ---------- */
@@ -161,7 +181,8 @@
     function update() {
       var r = el.getBoundingClientRect();
       var vh = window.innerHeight;
-      var p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height + vh * 0.35)));
+      // Fully lit by the time the quote's bottom edge reaches 80% of the viewport.
+      var p = Math.min(1, Math.max(0, (vh * 0.95 - r.top) / (r.height + vh * 0.15)));
       var n = Math.round(p * spans.length);
       spans.forEach(function (s, idx) { s.classList.toggle("on", idx < n); });
     }
@@ -215,6 +236,8 @@
     if (next) next.addEventListener("click", function () { go(index + 1); restart(); });
     root.addEventListener("pointerenter", function () { clearInterval(timer); });
     root.addEventListener("pointerleave", restart);
+    root.addEventListener("focusin", function () { clearInterval(timer); });
+    root.addEventListener("focusout", function (e) { if (!root.contains(e.relatedTarget)) restart(); });
     // Swipe support
     var startX = null;
     track.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; }, { passive: true });
@@ -228,44 +251,100 @@
     restart();
   });
 
-  /* ---------- News filters + search ---------- */
+  /* ---------- Filters + search (news, legal blog, journal) ---------- */
   var newsRoot = $("[data-news]");
   if (newsRoot) {
-    var cards = $$(".news-card", newsRoot);
+    var cards = $$("[data-cat]", newsRoot);
+    // Match typed text regardless of curly quotes and hyphens; data-q adds a post's section headings.
+    var norm = function (s) { return String(s).toLowerCase().replace(/[\u2018\u2019\u02bc]/g, "'").replace(/[\u2010-\u2015-]/g, " ").replace(/\s+/g, " ").trim(); };
+    cards.forEach(function (c) { c._q = norm(c.textContent + " " + (c.getAttribute("data-q") || "")); });
     var chips = $$(".chip", newsRoot);
     var search = $(".search-field input", newsRoot);
     var empty = $(".news-empty", newsRoot);
     var countEl = $("[data-news-count]", newsRoot);
-    var active = "all";
+    var one = countEl && countEl.getAttribute("data-one") || "story";
+    var many = countEl && countEl.getAttribute("data-many") || "stories";
+    var fallback = newsRoot.getAttribute("data-default") || "all";
+    var active = fallback;
     var params = new URLSearchParams(window.location.search);
-    if (params.get("topic")) active = params.get("topic");
+    // Ignore unknown topics (typos, old links) instead of showing an empty list.
+    var t = params.get("topic");
+    if (t && chips.some(function (c) { return c.getAttribute("data-filter") === t; })) active = t;
+    // Long lists start collapsed to data-limit items until the visitor filters, searches or asks for all.
+    var limit = parseInt(newsRoot.getAttribute("data-limit"), 10) || Infinity;
+    var expanded = false;
+    var more = $("[data-news-more]", newsRoot);
 
     function apply() {
-      var q = (search && search.value || "").trim().toLowerCase();
+      var q = norm(search && search.value || "");
+      var cap = (!expanded && active === fallback && !q) ? limit : Infinity;
       var shown = 0;
       cards.forEach(function (card) {
         var matchCat = active === "all" || card.getAttribute("data-cat") === active;
-        var matchQ = !q || card.textContent.toLowerCase().indexOf(q) !== -1;
-        var show = matchCat && matchQ;
-        card.classList.toggle("is-hidden", !show);
-        if (show) shown++;
+        var matchQ = !q || card._q.indexOf(q) !== -1;
+        var match = matchCat && matchQ;
+        card.classList.toggle("is-hidden", !(match && shown < cap));
+        if (match) shown++;
       });
       chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c.getAttribute("data-filter") === active)); });
       if (empty) empty.classList.toggle("is-visible", shown === 0);
-      if (countEl) countEl.textContent = shown + (shown === 1 ? " story" : " stories");
+      if (countEl) countEl.textContent = shown + " " + (shown === 1 ? one : many);
+      if (more) { more.hidden = !(cap !== Infinity && shown > cap); more.textContent = "Show all " + shown + " " + many; }
     }
+    // On phones the chip row scrolls sideways; keep the selected chip in view.
+    var showChip = function () {
+      var on = chips.filter(function (c) { return c.getAttribute("aria-pressed") === "true"; })[0];
+      if (!on) return;
+      var row = on.parentNode;
+      if (row.scrollWidth > row.clientWidth) row.scrollLeft += on.getBoundingClientRect().left - row.getBoundingClientRect().left - 16;
+    };
+    if (more) more.addEventListener("click", function () { expanded = true; apply(); });
+    var resetBtn = $("[data-news-reset]", newsRoot);
+    if (resetBtn) resetBtn.addEventListener("click", function () {
+      active = fallback;
+      if (search) search.value = "";
+      var url = new URL(window.location.href);
+      url.searchParams.delete("topic");
+      window.history.replaceState(null, "", url);
+      apply();
+    });
     chips.forEach(function (chip) {
       chip.addEventListener("click", function () {
         active = chip.getAttribute("data-filter");
         var url = new URL(window.location.href);
-        if (active === "all") url.searchParams.delete("topic"); else url.searchParams.set("topic", active);
+        if (active === fallback) url.searchParams.delete("topic"); else url.searchParams.set("topic", active);
         window.history.replaceState(null, "", url);
         apply();
+        showChip();
       });
     });
     if (search) search.addEventListener("input", apply);
     apply();
+    showChip();
+    // A link like news/?topic=… should land on the filtered list, not the top of the page.
+    if (active !== fallback && !window.location.hash) {
+      var bar = $(".news-toolbar", newsRoot);
+      if (bar) { bar.classList.remove("reveal"); bar.scrollIntoView(); }
+    }
   }
+
+  /* ---------- Video facades: load YouTube only when the visitor asks for it ---------- */
+  $$("[data-yt]").forEach(function (fig) {
+    var link = $(".video-facade", fig);
+    if (!link) return;
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      var id = fig.getAttribute("data-yt");
+      var title = ($(".video-title", fig) || {}).textContent || "Video";
+      var frame = document.createElement("iframe");
+      frame.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id) + "?autoplay=1&rel=0";
+      frame.title = title;
+      frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      frame.allowFullscreen = true;
+      link.replaceWith(frame);
+      frame.focus();
+    });
+  });
 
   /* ---------- Contact form: Formspree-style endpoint if configured, else mailto ---------- */
   $$("form[data-contact]").forEach(function (form) {
@@ -275,9 +354,21 @@
       status.textContent = msg;
       status.className = "form-status is-visible " + (ok ? "ok" : "err");
     }
+    var clearInvalid = function (e) {
+      if (e.target.validity && e.target.validity.valid) e.target.removeAttribute("aria-invalid");
+      if (status && status.classList.contains("err") && form.checkValidity()) status.className = "form-status";
+    };
+    form.addEventListener("input", clearInvalid);
+    form.addEventListener("change", clearInvalid);
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (!form.reportValidity()) return;
+      if (!form.checkValidity()) {
+        form.classList.add("was-validated");
+        $$(":invalid", form).forEach(function (el) { el.setAttribute("aria-invalid", "true"); });
+        show("Please complete the highlighted fields.", false);
+        form.reportValidity();
+        return;
+      }
       var data = new FormData(form);
       if (data.get("_gotcha")) return; // honeypot
       var endpoint = form.getAttribute("data-endpoint");
@@ -312,10 +403,10 @@
       var email = $("input[type=email]", form);
       if (!email || !email.value) return;
       var to = form.getAttribute("data-mailto");
-      window.location.href = "mailto:" + to + "?subject=" + encodeURIComponent("Please add me to the Esteemable Acts newsletter") + "&body=" + encodeURIComponent("Please subscribe: " + email.value);
-      email.value = "";
-      var btn = $("button", form);
-      if (btn) { btn.textContent = "Thank you ✦"; setTimeout(function () { btn.textContent = "Subscribe"; }, 4000); }
+      window.location.href = "mailto:" + to + "?subject=" + encodeURIComponent("Please email me when new posts are published") + "&body=" + encodeURIComponent("Please add this address to your new-post emails: " + email.value);
+      // Nothing is sent until the visitor presses Send in their email app, so say so.
+      var status = $(".nl-status", form);
+      if (status) status.textContent = "Your email app should open with the request ready. Press Send to finish, or email " + to + " directly.";
     });
   });
 
@@ -338,21 +429,39 @@
 
   /* ---------- Copy-to-clipboard buttons (media kit) ---------- */
   $$("[data-copy]").forEach(function (btn) {
+    var original = btn.innerHTML, timer;
+    var live = document.createElement("span");
+    live.className = "sr-only";
+    live.setAttribute("aria-live", "polite");
+    btn.after(live);
     btn.addEventListener("click", function () {
       var target = $(btn.getAttribute("data-copy"));
       if (!target) return;
       var text = target.innerText.trim();
       var done = function () {
-        var original = btn.innerHTML;
+        clearTimeout(timer);
         btn.textContent = "Copied ✦";
-        setTimeout(function () { btn.innerHTML = original; }, 2000);
+        live.textContent = "Copied to clipboard";
+        timer = setTimeout(function () { btn.innerHTML = original; live.textContent = ""; }, 2000);
       };
-      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, function () {});
+      // If the clipboard is blocked, select the bio so the visitor can copy it themselves.
+      var manual = function () {
+        var r = document.createRange();
+        r.selectNodeContents(target);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(r);
+        clearTimeout(timer);
+        btn.textContent = "Press Ctrl/⌘+C";
+        live.textContent = "Bio selected. Press Control or Command plus C to copy.";
+        timer = setTimeout(function () { btn.innerHTML = original; live.textContent = ""; }, 4000);
+      };
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, manual);
       else {
         var ta = document.createElement("textarea");
         ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
         document.body.appendChild(ta); ta.select();
-        try { document.execCommand("copy"); done(); } catch (e) { /* ignore */ }
+        try { if (document.execCommand("copy")) done(); else manual(); } catch (e) { manual(); }
         document.body.removeChild(ta);
       }
     });
@@ -364,11 +473,11 @@
       var section = btn.closest("[data-printable]");
       if (section) section.classList.add("print-this");
       document.body.classList.add("printing-section");
-      window.print();
-      setTimeout(function () {
+      window.addEventListener("afterprint", function () {
         document.body.classList.remove("printing-section");
         if (section) section.classList.remove("print-this");
-      }, 500);
+      }, { once: true });
+      window.print();
     });
   });
 

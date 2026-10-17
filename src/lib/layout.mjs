@@ -11,7 +11,7 @@ export function html(strings, ...values) {
     out += str;
     if (i < values.length) {
       const v = values[i];
-      if (Array.isArray(v)) out += v.join("");
+      if (Array.isArray(v)) out += v.flat(Infinity).join("");
       else if (v !== null && v !== undefined && v !== false) out += v;
     }
   });
@@ -38,7 +38,7 @@ ${page.base ? page.base : ""}
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${canonical}">
 ${page.noindex ? '<meta name="robots" content="noindex">' : ""}
-<meta name="theme-color" content="#15122a">
+<meta name="theme-color" content="#fbf7f1">
 <meta property="og:type" content="${page.ogType || "website"}">
 <meta property="og:site_name" content="${esc(site.name)}">
 <meta property="og:title" content="${esc(title)}">
@@ -50,8 +50,10 @@ ${page.noindex ? '<meta name="robots" content="noindex">' : ""}
 <link rel="icon" href="${ctx.root}assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="${ctx.root}assets/img/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="${esc(site.name)} — IP &amp; AI Law Watch" href="${ctx.root}feed.xml">
-<link rel="preload" href="${ctx.root}assets/fonts/fraunces-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="${ctx.root}assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+${page.base
+  ? "" // The 404 page resolves URLs via <base>, which the preload scanner doesn't wait for.
+  : html`<link rel="preload" href="${ctx.root}assets/fonts/fraunces-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${ctx.root}assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>`}
 <link rel="stylesheet" href="${ctx.root}assets/css/main.css?v=${ctx.version}">
 <script>document.documentElement.classList.add("js")</script>
 ${page.jsonLd ? `<script type="application/ld+json">${JSON.stringify(page.jsonLd)}</script>` : ""}
@@ -72,7 +74,7 @@ function header(page, ctx) {
     <nav class="nav" id="site-nav" aria-label="Main">
       <ul class="nav-list">
         ${site.nav.map(
-          (item) => html`<li><a class="nav-link" href="${ctx.root}${item.href}"${current === item.href ? ' aria-current="page"' : ""}>${item.label}${item.badge ? `<span class="badge-new">${item.badge}</span>` : ""}</a></li>`
+          (item) => html`<li><a class="nav-link" href="${ctx.root}${item.href}"${current === item.href ? ' aria-current="page"' : ""}>${item.label}${item.badge ? `<span class="sr-only"> (</span><span class="badge-new">${item.badge}</span><span class="sr-only">)</span>` : ""}</a></li>`
         )}
       </ul>
       <a class="btn btn-sm nav-cta" href="${ctx.root}contact/">Free consultation <span class="arrow">→</span></a>
@@ -90,6 +92,7 @@ function footer(page, ctx) {
       <div>
         <a class="brand" href="${ctx.root}">${logoMark("brand-mark", "f")}<span class="brand-text"><span class="brand-name">Francine D. Ward</span><span class="brand-tag">${esc(site.tagline)}</span></span></a>
         <p class="mt-1">Protecting the work you create, the legacy you leave, and the person you're becoming — with 35 years of practice and a life built one esteemable act at a time.</p>
+        <p class="footer-communities">Join Francine's Facebook communities: ${site.communities.map((c, i) => html`${i ? " · " : ""}<a href="${c.href}" target="_blank" rel="noopener">${c.name}</a>`)}</p>
         ${site.socials.length
           ? html`<div class="socials">${site.socials.map((s) => html`<a href="${s.href}" target="_blank" rel="noopener" aria-label="${s.name}">${icon(s.icon)}</a>`)}</div>`
           : ""}
@@ -100,8 +103,9 @@ function footer(page, ctx) {
           <li><a href="${ctx.root}meet-francine/">Meet Francine</a></li>
           <li><a href="${ctx.root}esteemable-acts/">Esteemable Acts</a></li>
           <li><a href="${ctx.root}speaking/">Speaking &amp; Media Kit</a></li>
+          <li><a href="${ctx.root}esteemable-acts/journal/">Esteemable Acts Journal</a></li>
           <li><a href="${ctx.root}news/">IP &amp; AI Law Watch</a></li>
-          <li><a href="${ctx.root}insights/">Insights</a></li>
+          <li><a href="${ctx.root}insights/">Insights &amp; Guides</a></li>
           <li><a href="${ctx.root}resources/">Free Resources</a></li>
         </ul>
       </div>
@@ -111,8 +115,9 @@ function footer(page, ctx) {
           <li><a href="${ctx.root}attorney-at-law/">Practice Overview</a></li>
           <li><a href="${ctx.root}intellectual-property/">Intellectual Property</a></li>
           <li><a href="${ctx.root}estate-planning/">Estate Planning</a></li>
+          <li><a href="${ctx.root}legal-blog/">Legal Blog</a></li>
           <li><a href="${ctx.root}client-reviews/">Client Reviews</a></li>
-          <li><a href="${ctx.root}contact/">Book a Consultation</a></li>
+          <li><a href="${site.booking}" target="_blank" rel="noopener">Book a Consultation</a></li>
         </ul>
       </div>
       <div>
@@ -122,11 +127,12 @@ function footer(page, ctx) {
           <li><a href="mailto:${site.email}">${site.email}</a></li>
           <li><span style="opacity:.8">${esc(site.address.street)}<br>${esc(site.address.city)}, ${site.address.region} ${site.address.postal}</span></li>
         </ul>
-        <h4 class="mt-2">The Esteemable Acts letter</h4>
+        <h4 class="mt-2">New posts by email</h4>
         <form class="newsletter" data-newsletter data-mailto="${site.email}">
           <label class="sr-only" for="nl-email">Email address</label>
           <input id="nl-email" type="email" placeholder="you@example.com" required>
           <button class="btn btn-gold btn-sm" type="submit">Subscribe</button>
+          <p class="nl-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -147,14 +153,23 @@ ${(page.scripts || []).map((src) => `<script src="${ctx.root}${src}?v=${ctx.vers
 </html>`;
 }
 
+// Typewriter apostrophes render as tall ticks in Fraunces, so curl them in visible text.
+// Only text between tags is touched — never attributes, scripts or styles.
+export function smartQuotes(doc) {
+  return doc
+    .split(/(<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<[^>]*>)/)
+    .map((part, i) => (i % 2 ? part : part.replace(/([A-Za-z])'([A-Za-z])/g, "$1’$2").replace(/([A-Za-z])'(?=[\s.,;:!?)”]|$)/g, "$1’")))
+    .join("");
+}
+
 export function layout(page, ctx, body) {
-  return html`${head(page, ctx)}
+  return smartQuotes(html`${head(page, ctx)}
 <body class="${page.theme ? "theme-" + page.theme : ""}">
 ${header(page, ctx)}
 <main id="main">
 ${body}
 </main>
-${footer(page, ctx)}`;
+${footer(page, ctx)}`);
 }
 
 // Shared building blocks -------------------------------------------------
@@ -191,14 +206,14 @@ export function lines(text) {
     .join("");
 }
 
-export function ctaBand(ctx, { title = "Let's protect what matters to you.", lead, primary, secondary } = {}) {
+export function ctaBand(ctx, { title = "Let’s protect what matters to you.", eyebrow = "Complimentary consultation", lead, primary, secondary, extraLink } = {}) {
   return html`<section class="section section-tight">
   <div class="container">
     <div class="cta-band reveal reveal-scale">
       <div class="aurora" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
       <div class="cta-band-inner">
         <div>
-          <p class="eyebrow">Complimentary consultation</p>
+          <p class="eyebrow">${eyebrow}</p>
           <h2>${title}</h2>
           <p class="lead">${lead || "Appointments are virtual, so wherever you are in California, New York or D.C., the first conversation is on the house. Bring your questions — leave with a plan."}</p>
           <div class="btn-row mt-2">
@@ -208,8 +223,8 @@ export function ctaBand(ctx, { title = "Let's protect what matters to you.", lea
         </div>
         <div class="cta-contact">
           <a href="tel:${site.phoneHref}">${icon("phone")} ${site.phone}</a>
-          <a href="mailto:${site.email}">${icon("mail")} ${site.email}</a>
-          <a href="${ctx.root}contact/">${icon("video")} Virtual appointments</a>
+          <a href="mailto:${site.email}">${icon("mail")} <span>${site.email.replace("@", "@<wbr>")}</span></a>
+          ${extraLink || html`<a href="${site.booking}" target="_blank" rel="noopener">${icon("calendar")} Book a 30-minute call online</a>`}
         </div>
       </div>
     </div>
@@ -217,17 +232,25 @@ export function ctaBand(ctx, { title = "Let's protect what matters to you.", lea
 </section>`;
 }
 
-// Portrait: shows src/assets/img/francine-portrait.(jpg|webp|png) when present,
+// YouTube video as a click-to-play facade: no request to YouTube until the visitor
+// presses play (main.js swaps in a youtube-nocookie iframe).
+export function videoEmbed(id, title, { caption = "" } = {}) {
+  return `<figure class="video-embed" data-yt="${esc(id)}"><a class="video-facade" href="https://www.youtube.com/watch?v=${esc(id)}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${esc(id)}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="video-play" aria-hidden="true"></span><span class="sr-only">Play video: </span><span class="video-title">${esc(title)}</span></a></figure>${caption ? `<p class="video-caption">${caption}</p>` : ""}`;
+}
+
+// Portrait: shows a photo from src/assets/img/ (default francine-portrait.jpg) when present,
 // otherwise an animated monogram so the layout never shows a broken image.
+// Photos are 880×1100 (4:5) crops of Bre Flores Photography portraits from the previous site.
 import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { monogramArt } from "./icons.mjs";
 const imgDir = fileURLToPath(new URL("../assets/img/", import.meta.url));
 export const portraitFile = ["francine-portrait.webp", "francine-portrait.jpg", "francine-portrait.png"].find((f) => existsSync(imgDir + f));
 
-export function portrait(ctx, alt = "Portrait of Francine D. Ward") {
-  return `<div class="portrait-frame">
-    <div class="portrait-art">${monogramArt("pa")}</div>
-    ${portraitFile ? `<img src="${ctx.root}assets/img/${portraitFile}" alt="${esc(alt)}" width="800" height="1000" fetchpriority="high">` : ""}
+export function portrait(ctx, { file = portraitFile, alt = "Portrait of Francine D. Ward", eager = false } = {}) {
+  const photo = file && existsSync(imgDir + file) ? file : null;
+  return `<div class="portrait-frame${photo ? " has-photo" : ""}">
+    ${photo ? "" : `<div class="portrait-art">${monogramArt("pa")}</div>`}
+    ${photo ? `<img src="${ctx.root}assets/img/${photo}" alt="${esc(alt)}" width="880" height="1100"${eager ? ' fetchpriority="high"' : ' loading="lazy"'}>` : ""}
   </div>`;
 }

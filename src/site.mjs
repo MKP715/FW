@@ -19,16 +19,26 @@ export const site = {
     country: "US",
   },
   hours: "Appointments are virtual · Initial consultation is complimentary",
+  // Online booking used by the previous site (30-minute consultation).
+  booking: "https://calendly.com/francineward/30min",
   // Optional: set to a Formspree (or similar) endpoint to post the contact form
   // directly, e.g. "https://formspree.io/f/abcdwxyz". Leave empty to fall back to email.
   formEndpoint: "",
   socials: [
-    // Profile links found on the previous site — confirm each before launch.
+    // Profile links used in the previous site's header, footer and posts.
+    { name: "Facebook", icon: "facebook", href: "https://www.facebook.com/Francinewardlawyer/" },
+    { name: "Instagram", icon: "instagram", href: "https://www.instagram.com/Francinewardlawyer/" },
     { name: "LinkedIn", icon: "linkedin", href: "https://www.linkedin.com/in/trademarklawyer/" },
-    { name: "Facebook", icon: "facebook", href: "https://www.facebook.com/Francineward/" },
+    { name: "YouTube", icon: "youtube", href: "https://www.youtube.com/@Francineward" },
     { name: "X", icon: "x", href: "https://x.com/Francineward" },
-    { name: "YouTube", icon: "youtube", href: "https://www.youtube.com/channel/UCkYy8SWYRR58Hmx-1xObBzA" },
   ],
+  // Facebook communities Francine runs.
+  communities: [
+    { name: "Legal Insights", href: "https://www.facebook.com/groups/legalinsights" },
+    { name: "Esteemable Acts", href: "https://www.facebook.com/groups/esteemableacts" },
+    { name: "Esteemable Acts Wednesdays", href: "https://www.facebook.com/groups/esteemableactswednesdays" },
+  ],
+  reviews: { name: "Yelp", href: "https://www.yelp.com/biz/francine-d-ward-palm-desert-2" },
   nav: [
     { label: "Meet Francine", href: "meet-francine/" },
     { label: "Law Office", href: "attorney-at-law/" },

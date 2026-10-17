@@ -16,6 +16,8 @@ export default {
       <a class="btn btn-gold" href="./">Back to home <span class="arrow">→</span></a>
       <a class="btn btn-ghost-light" href="attorney-at-law/">Law Office</a>
       <a class="btn btn-ghost-light" href="esteemable-acts/">Esteemable Acts</a>
+      <a class="btn btn-ghost-light" href="legal-blog/">Legal Blog</a>
+      <a class="btn btn-ghost-light" href="esteemable-acts/journal/">Journal</a>
       <a class="btn btn-ghost-light" href="news/">News</a>
       <a class="btn btn-ghost-light" href="contact/">Contact</a>
     </div>

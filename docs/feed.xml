@@ -12,17 +12,17 @@
       <guid isPermaLink="false">sdny-ai-music-streaming-fraud-sentence</guid>
       <pubDate>Tue, 06 Oct 2026 12:00:00 GMT</pubDate>
       <category>AI &amp; Music</category>
-      <source url="https://www.justice.gov/usao-sdny/pr/north-carolina-man-sentenced-18-months-prison-super-intelligence-assisted-music">U.S. Attorney's Office, Southern District of New York</source>
+      <source url="https://www.justice.gov/usao-sdny/pr/north-carolina-man-sentenced-18-months-prison-super-intelligence-assisted-music">U.S. Attorney’s Office, Southern District of New York</source>
       <description>Michael Smith of Cornelius, N.C., was sentenced by U.S. District Judge John G. Koeltl to 18 months in prison and two years of supervised release, and ordered to forfeit more than $8 million. Smith had pleaded guilty to conspiracy to commit wire fraud for using thousands of automated bot accounts to stream AI-generated songs on major platforms from 2017 to 2024, collecting more than $8 million in royalties. Why it matters: Streaming royalties are paid from a shared pool, so fake streams take money directly from real artists and songwriters. Smith was punished for the fraud — not for making music with AI.</description>
     </item>
     <item>
-      <title>Third Circuit affirms: training ROSS's AI on Westlaw headnotes was not fair use</title>
+      <title>Third Circuit affirms: training ROSS’s AI on Westlaw headnotes was not fair use</title>
       <link>https://natlawreview.com/article/first-federal-appellate-fair-use-ruling-ai-training-rejects-non-generative-ais-use</link>
       <guid isPermaLink="false">thomson-reuters-v-ross-third-circuit</guid>
       <pubDate>Tue, 29 Sep 2026 12:00:00 GMT</pubDate>
       <category>AI &amp; Copyright</category>
       <source url="https://natlawreview.com/article/first-federal-appellate-fair-use-ruling-ai-training-rejects-non-generative-ais-use">The National Law Review</source>
-      <description>In Thomson Reuters v. ROSS Intelligence, the Third Circuit affirmed a 2025 ruling that ROSS infringed by using Westlaw headnotes to train a competing, non-generative legal-research AI. The court found the headnotes copyrightable and ROSS's commercial use harmful to Westlaw's market — including the emerging market for licensing AI training data. Commentators call it the first federal appellate fair-use ruling on AI training, though the court set generative-AI cases aside. Why it matters: It's the first appeals-court signal that copying content to train a competing AI product can fail fair use — and that licensing your content as training data is a real market worth protecting.</description>
+      <description>In Thomson Reuters v. ROSS Intelligence, the Third Circuit affirmed a 2025 ruling that ROSS infringed by using Westlaw headnotes to train a competing, non-generative legal-research AI. The court found the headnotes copyrightable and ROSS’s commercial use harmful to Westlaw’s market — including the emerging market for licensing AI training data. Commentators call it the first federal appellate fair-use ruling on AI training, though the court set generative-AI cases aside. Why it matters: It’s the first appeals-court signal that copying content to train a competing AI product can fail fair use — and that licensing your content as training data is a real market worth protecting.</description>
     </item>
     <item>
       <title>Sony Music and Universal sue Suno again, targeting its new v6 model</title>
@@ -31,7 +31,7 @@
       <pubDate>Fri, 18 Sep 2026 12:00:00 GMT</pubDate>
       <category>AI &amp; Music</category>
       <source url="https://variety.com/2026/music/news/sony-music-universal-music-sue-suno-label-backed-model-1236866921/">Variety</source>
-      <description>Sony Music and Universal Music Group filed a second copyright suit against AI music generator Suno, aimed at its newly launched v6 model. The complaint alleges v6 was trained partly on outputs of Suno's earlier, allegedly infringing models — what the labels call “model laundering.” Suno says v6 was trained from scratch without their recordings. The labels' original 2024 case remains pending. Why it matters: The case tests whether an AI company can escape an infringement claim by training a new model on an old model's output — a question that matters to anyone licensing or using AI music tools.</description>
+      <description>Sony Music and Universal Music Group filed a second copyright suit against AI music generator Suno, aimed at its newly launched v6 model. The complaint alleges v6 was trained partly on outputs of Suno’s earlier, allegedly infringing models — what the labels call “model laundering.” Suno says v6 was trained from scratch without their recordings. The labels’ original 2024 case remains pending. Why it matters: The case tests whether an AI company can escape an infringement claim by training a new model on an old model’s output — a question that matters to anyone licensing or using AI music tools.</description>
     </item>
     <item>
       <title>NYT v. OpenAI &amp; Microsoft reaches summary judgment as DOJ backs AI fair-use defense</title>
@@ -40,16 +40,16 @@
       <pubDate>Tue, 08 Sep 2026 12:00:00 GMT</pubDate>
       <category>AI &amp; Copyright</category>
       <source url="https://axios.com/2026/09/08/nyt-openai-microsoft-copyright-lawsuit">Axios</source>
-      <description>Summary-judgment briefing is under way in The New York Times' copyright suit against OpenAI and Microsoft, part of a consolidated proceeding before U.S. District Judge Sidney Stein in Manhattan. The Justice Department filed a non-binding statement of interest arguing that training large language models on copyrighted works is fair use; the newspaper plaintiffs asked the court to give it no weight. Why it matters: This is the highest-profile test of whether AI companies can train on journalism without a license — and the federal government taking a side is unusual.</description>
+      <description>Summary-judgment briefing is under way in The New York Times’ copyright suit against OpenAI and Microsoft, part of a consolidated proceeding before U.S. District Judge Sidney Stein in Manhattan. The Justice Department filed a non-binding statement of interest arguing that training large language models on copyrighted works is fair use; the newspaper plaintiffs asked the court to give it no weight. Why it matters: This is the highest-profile test of whether AI companies can train on journalism without a license — and the federal government taking a side is unusual.</description>
     </item>
     <item>
-      <title>Court grants final approval to $1.5 billion authors' settlement in Bartz v. Anthropic</title>
+      <title>Court grants final approval to $1.5 billion authors’ settlement in Bartz v. Anthropic</title>
       <link>https://authorsguild.org/news/court-grants-final-approval-anthropic-copyright-settlement/</link>
       <guid isPermaLink="false">bartz-v-anthropic-final-approval</guid>
       <pubDate>Mon, 20 Jul 2026 12:00:00 GMT</pubDate>
       <category>AI &amp; Copyright</category>
       <source url="https://authorsguild.org/news/court-grants-final-approval-anthropic-copyright-settlement/">The Authors Guild</source>
-      <description>A federal court in the Northern District of California granted final approval to the $1.5 billion class settlement resolving claims that books were downloaded from pirate libraries to build an AI training library. The settlement pays roughly $3,000 per work for about 480,000 works and requires destruction of the pirated files. It followed a 2025 ruling that training on lawfully acquired books was fair use, but keeping a library of pirated copies was not. Why it matters: How an AI company acquires its training data — not just how it uses it — can create billion-dollar liability. It's also a powerful reminder of why registering your copyrights matters.</description>
+      <description>A federal court in the Northern District of California granted final approval to the $1.5 billion class settlement resolving claims that books were downloaded from pirate libraries to build an AI training library. The settlement pays roughly $3,000 per work for about 480,000 works and requires destruction of the pirated files. It followed a 2025 ruling that training on lawfully acquired books was fair use, but keeping a library of pirated copies was not. Why it matters: How an AI company acquires its training data — not just how it uses it — can create billion-dollar liability. It’s also a powerful reminder of why registering your copyrights matters.</description>
     </item>
     <item>
       <title>Revised NO FAKES Act clears Senate Judiciary Committee</title>
@@ -58,10 +58,10 @@
       <pubDate>Thu, 18 Jun 2026 12:00:00 GMT</pubDate>
       <category>Right of Publicity</category>
       <source url="https://www.blackburn.senate.gov/2026/6/blackburn-coons-bipartisan-bill-to-protect-individuals-and-creators-from-deepfakes-passes-senate-judiciary-committee">Office of U.S. Sen. Marsha Blackburn</source>
-      <description>The Senate Judiciary Committee approved a revised, bipartisan NO FAKES Act by voice vote. The bill would create a federal right to control digital replicas of a person's voice and visual likeness, with a notice-and-takedown system, counter-notices, exemptions for news and satire, and post-mortem rights of up to 70 years. It still needs a full Senate vote and House action. Why it matters: If enacted, performers, creators and families would gain a nationwide way to stop unauthorized AI voice and likeness clones — and it would change how state laws like California's apply.</description>
+      <description>The Senate Judiciary Committee approved a revised, bipartisan NO FAKES Act by voice vote. The bill would create a federal right to control digital replicas of a person’s voice and visual likeness, with a notice-and-takedown system, counter-notices, exemptions for news and satire, and post-mortem rights of up to 70 years. It still needs a full Senate vote and House action. Why it matters: If enacted, performers, creators and families would gain a nationwide way to stop unauthorized AI voice and likeness clones — and it would change how state laws like California’s apply.</description>
     </item>
     <item>
-      <title>FTC begins enforcing the TAKE IT DOWN Act's 48-hour removal rule</title>
+      <title>FTC begins enforcing the TAKE IT DOWN Act’s 48-hour removal rule</title>
       <link>https://www.ftc.gov/news-events/news/press-releases/2026/05/ftc-begins-enforcing-take-it-down-act</link>
       <guid isPermaLink="false">ftc-take-it-down-enforcement</guid>
       <pubDate>Tue, 19 May 2026 12:00:00 GMT</pubDate>
@@ -70,7 +70,7 @@
       <description>The TAKE IT DOWN Act, signed in May 2025, made it a federal crime to publish nonconsensual intimate images — real or AI-generated — and gave platforms a year to build a removal process. As of May 19, 2026, covered platforms must remove such images and known copies within 48 hours of a valid request. The FTC launched a complaint portal and sent compliance letters to major platforms. Why it matters: Victims of deepfake imagery now have a federal takedown right with a deadline, and any business that hosts user content needs a compliant removal process.</description>
     </item>
     <item>
-      <title>Val Kilmer returns via AI in a new film — with his estate's consent</title>
+      <title>Val Kilmer returns via AI in a new film — with his estate’s consent</title>
       <link>https://abc7.com/post/val-kilmer-returns-ai-deep-grave-trailer/18897318/</link>
       <guid isPermaLink="false">val-kilmer-ai-estate-consent</guid>
       <pubDate>Thu, 16 Apr 2026 12:00:00 GMT</pubDate>
@@ -85,7 +85,7 @@
       <pubDate>Wed, 25 Mar 2026 12:00:00 GMT</pubDate>
       <category>AI &amp; Copyright</category>
       <source url="https://www.supremecourt.gov/opinions/25pdf/24-171_bq7d.pdf">Supreme Court of the United States</source>
-      <description>The Court reversed a roughly $1 billion jury verdict against internet provider Cox Communications, holding that a provider is not contributorily liable merely for continuing to serve subscribers it knows are infringing. Liability requires culpable intent — such as inducing infringement or offering a service tailored to it. Why it matters: It's now harder to hold internet and tech platforms — including AI services — responsible for their users' infringement, which changes enforcement strategy for creators.</description>
+      <description>The Court reversed a roughly $1 billion jury verdict against internet provider Cox Communications, holding that a provider is not contributorily liable merely for continuing to serve subscribers it knows are infringing. Liability requires culpable intent — such as inducing infringement or offering a service tailored to it. Why it matters: It’s now harder to hold internet and tech platforms — including AI services — responsible for their users’ infringement, which changes enforcement strategy for creators.</description>
     </item>
     <item>
       <title>Supreme Court denies artificial intelligence authorship claim for artwork copyright</title>
@@ -94,16 +94,16 @@
       <pubDate>Wed, 11 Mar 2026 12:00:00 GMT</pubDate>
       <category>AI &amp; Copyright</category>
       <source url="https://constitutioncenter.org/blog/supreme-court-denies-artificial-intelligence-authorship-claim-for-artwork-copyright">National Constitution Center</source>
-      <description>On March 2, 2026, the Supreme Court declined to hear Thaler v. Perlmutter, leaving in place the D.C. Circuit's unanimous 2025 ruling that the Copyright Act requires a human author. Stephen Thaler had sought to register “A Recent Entrance to Paradise,” an image generated by his AI system, listing the machine as its sole author. The D.C. Circuit noted that works made by humans who use AI can still be registered. Why it matters: Purely AI-generated work can't be registered for copyright in the U.S. If you create with AI, document your own creative choices — selection, arrangement, editing — because that's what protection rests on.</description>
+      <description>On March 2, 2026, the Supreme Court declined to hear Thaler v. Perlmutter, leaving in place the D.C. Circuit’s unanimous 2025 ruling that the Copyright Act requires a human author. Stephen Thaler had sought to register “A Recent Entrance to Paradise,” an image generated by his AI system, listing the machine as its sole author. The D.C. Circuit noted that works made by humans who use AI can still be registered. Why it matters: Purely AI-generated work can’t be registered for copyright in the U.S. If you create with AI, document your own creative choices — selection, arrangement, editing — because that’s what protection rests on.</description>
     </item>
     <item>
-      <title>Federal judge: a defendant's chats with a consumer AI chatbot aren't privileged</title>
+      <title>Federal judge: a defendant’s chats with a consumer AI chatbot aren’t privileged</title>
       <link>https://www.debevoise.com/insights/publications/2026/02/update-judge-rakoff-issues-written-opinion-that-ai</link>
       <guid isPermaLink="false">heppner-ai-chats-not-privileged</guid>
       <pubDate>Tue, 17 Feb 2026 12:00:00 GMT</pubDate>
       <category>Privacy &amp; Tech</category>
       <source url="https://www.debevoise.com/insights/publications/2026/02/update-judge-rakoff-issues-written-opinion-that-ai">Debevoise &amp; Plimpton</source>
-      <description>In United States v. Heppner (S.D.N.Y.), Judge Jed Rakoff issued a written opinion holding that a criminal defendant's conversations with a consumer AI chatbot were not protected by attorney-client privilege or the work-product doctrine. Why it matters: Typing your legal situation into a public AI tool is not the same as talking to your lawyer. Those conversations may be discoverable — talk to counsel first.</description>
+      <description>In United States v. Heppner (S.D.N.Y.), Judge Jed Rakoff issued a written opinion holding that a criminal defendant’s conversations with a consumer AI chatbot were not protected by attorney-client privilege or the work-product doctrine. Why it matters: Typing your legal situation into a public AI tool is not the same as talking to your lawyer. Those conversations may be discoverable — talk to counsel first.</description>
     </item>
     <item>
       <title>New York enacts AI “synthetic performer” ad disclosure and post-mortem likeness laws</title>
@@ -112,7 +112,7 @@
       <pubDate>Thu, 11 Dec 2025 12:00:00 GMT</pubDate>
       <category>Right of Publicity</category>
       <source url="https://www.governor.ny.gov/news/governor-hochul-signs-legislation-protect-consumers-and-boost-ai-transparency-film-industry">Office of New York Governor Kathy Hochul</source>
-      <description>Governor Hochul signed legislation requiring advertisers to disclose when ads use AI-generated “synthetic performers,” with civil penalties for violations. She also signed a law requiring consent from heirs or executors before a deceased person's name, image or likeness is used commercially. Why it matters: Advertisers reaching New Yorkers must label AI “people,” and estates gain more control over a loved one's likeness after death.</description>
+      <description>Governor Hochul signed legislation requiring advertisers to disclose when ads use AI-generated “synthetic performers,” with civil penalties for violations. She also signed a law requiring consent from heirs or executors before a deceased person’s name, image or likeness is used commercially. Why it matters: Advertisers reaching New Yorkers must label AI “people,” and estates gain more control over a loved one’s likeness after death.</description>
     </item>
     <item>
       <title>USPTO rescinds 2024 AI inventorship guidance and issues a revised standard</title>
@@ -133,13 +133,13 @@
       <description>WMG settled its 2024 copyright suit against Suno and formed a partnership under which Suno will launch licensed models and add download limits. The deal includes opt-in controls for artists and songwriters over their names, images, likenesses, voices and compositions. Why it matters: It points toward a future where AI music is licensed and artists opt in — affecting how musicians are paid and whether they can control voice cloning.</description>
     </item>
     <item>
-      <title>UK High Court largely rejects Getty Images' claims against Stability AI</title>
+      <title>UK High Court largely rejects Getty Images’ claims against Stability AI</title>
       <link>https://www.judiciary.uk/judgments/getty-images-v-stability-ai/</link>
       <guid isPermaLink="false">getty-v-stability-uk</guid>
       <pubDate>Tue, 04 Nov 2025 12:00:00 GMT</pubDate>
       <category>AI &amp; Copyright</category>
       <source url="https://www.judiciary.uk/judgments/getty-images-v-stability-ai/">Courts and Tribunals Judiciary (UK)</source>
-      <description>In Getty Images v. Stability AI, the High Court rejected Getty's secondary copyright claim, finding that Stable Diffusion's model weights do not store copies of Getty's works. Getty succeeded only on a narrow trademark point about watermarks in some older outputs. Getty had dropped its main training claims during trial, so whether AI training itself infringes was not decided. Why it matters: A leading non-U.S. ruling that an AI model isn't itself an “infringing copy” — and a reminder that where training happens, and what evidence you have, can decide these cases.</description>
+      <description>In Getty Images v. Stability AI, the High Court rejected Getty’s secondary copyright claim, finding that Stable Diffusion’s model weights do not store copies of Getty’s works. Getty succeeded only on a narrow trademark point about watermarks in some older outputs. Getty had dropped its main training claims during trial, so whether AI training itself infringes was not decided. Why it matters: A leading non-U.S. ruling that an AI model isn’t itself an “infringing copy” — and a reminder that where training happens, and what evidence you have, can decide these cases.</description>
     </item>
     <item>
       <title>Universal Music settles with Udio and plans a licensed AI music platform</title>
@@ -151,13 +151,13 @@
       <description>UMG and AI song generator Udio announced a settlement and new licenses for recorded music and publishing, with plans for a subscription creation-and-streaming platform. UMG said artists would be paid both for training and for fan creations using their work. Why it matters: Major labels are turning lawsuits into licensing deals — setting expectations for how AI companies must pay rights holders.</description>
     </item>
     <item>
-      <title>OpenAI pauses Sora videos of Martin Luther King Jr. at his estate's request</title>
+      <title>OpenAI pauses Sora videos of Martin Luther King Jr. at his estate’s request</title>
       <link>https://techcrunch.com/2025/10/16/openai-pauses-sora-video-generations-of-martin-luther-king-jr</link>
       <guid isPermaLink="false">sora-mlk-estate</guid>
       <pubDate>Thu, 16 Oct 2025 12:00:00 GMT</pubDate>
       <category>Estate Planning</category>
       <source url="https://techcrunch.com/2025/10/16/openai-pauses-sora-video-generations-of-martin-luther-king-jr">TechCrunch</source>
-      <description>After users created disrespectful AI videos of Dr. King with the Sora app, OpenAI paused generations of his likeness in a joint statement with the King estate, and said representatives of other historical figures can ask for their likenesses to be excluded. Why it matters: Families and estates increasingly have to police a loved one's likeness online. Naming who controls those rights in your estate plan matters.</description>
+      <description>After users created disrespectful AI videos of Dr. King with the Sora app, OpenAI paused generations of his likeness in a joint statement with the King estate, and said representatives of other historical figures can ask for their likenesses to be excluded. Why it matters: Families and estates increasingly have to police a loved one’s likeness online. Naming who controls those rights in your estate plan matters.</description>
     </item>
     <item>
       <title>California adds fast injunctive relief and digital replicas to its right of publicity statute</title>
@@ -166,7 +166,7 @@
       <pubDate>Fri, 10 Oct 2025 12:00:00 GMT</pubDate>
       <category>Right of Publicity</category>
       <source url="https://www.hunton.com/privacy-and-cybersecurity-law-blog/california-adds-injunctive-relief-to-its-right-of-publicity-statute-and-extends-liability-to-digital-replicas">Hunton Andrews Kurth</source>
-      <description>Governor Newsom signed SB 683, amending California Civil Code § 3344 to expressly allow injunctions and temporary restraining orders against unauthorized use of a person's name, voice or likeness — and to include digital replicas in the definitions of voice and likeness. Why it matters: Californians whose identity is misused, including through AI deepfakes, can seek quick court-ordered takedowns — not just money damages later.</description>
+      <description>Governor Newsom signed SB 683, amending California Civil Code § 3344 to expressly allow injunctions and temporary restraining orders against unauthorized use of a person’s name, voice or likeness — and to include digital replicas in the definitions of voice and likeness. Why it matters: Californians whose identity is misused, including through AI deepfakes, can seek quick court-ordered takedowns — not just money damages later.</description>
     </item>
     <item>
       <title>New law sets a permanent $15 million estate and gift tax exemption starting in 2026</title>
@@ -175,16 +175,16 @@
       <pubDate>Fri, 04 Jul 2025 12:00:00 GMT</pubDate>
       <category>Estate Planning</category>
       <source url="https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax">Internal Revenue Service</source>
-      <description>Legislation signed July 4, 2025 raised the federal basic exclusion amount to $15 million per person for 2026, with inflation indexing resuming in 2027 and no scheduled sunset. The generation-skipping transfer exemption is also $15 million, and the annual gift exclusion is $19,000 for 2026. Why it matters: The feared 2026 drop in the exemption didn't happen, so plans built around it may deserve a review. Wills, trusts, incapacity planning and digital-asset instructions still matter for reasons that have nothing to do with tax.</description>
+      <description>Legislation signed July 4, 2025 raised the federal basic exclusion amount to $15 million per person for 2026, with inflation indexing resuming in 2027 and no scheduled sunset. The generation-skipping transfer exemption is also $15 million, and the annual gift exclusion is $19,000 for 2026. Why it matters: The feared 2026 drop in the exemption didn’t happen, so plans built around it may deserve a review. Wills, trusts, incapacity planning and digital-asset instructions still matter for reasons that have nothing to do with tax.</description>
     </item>
     <item>
-      <title>Judge rules Meta's AI training on authors' books was fair use — on that record</title>
+      <title>Judge rules Meta’s AI training on authors’ books was fair use — on that record</title>
       <link>https://perkinscoie.com/insights/update/court-sides-meta-fair-use-and-dmca-questions-leaves-door-open-future-challenges</link>
       <guid isPermaLink="false">kadrey-v-meta-fair-use</guid>
       <pubDate>Wed, 25 Jun 2025 12:00:00 GMT</pubDate>
       <category>AI &amp; Copyright</category>
       <source url="https://perkinscoie.com/insights/update/court-sides-meta-fair-use-and-dmca-questions-leaves-door-open-future-challenges">Perkins Coie</source>
-      <description>Judge Vince Chhabria granted Meta summary judgment, finding its use of authors' books to train Llama “highly transformative” and that the authors had not shown market harm. He stressed the ruling was narrow, warning that AI training that significantly harms the market for original works would be hard to defend as fair use. Why it matters: Together with other 2025 rulings, it suggests AI training may be fair use but can lose on evidence of market harm. Creators' records of lost sales and licensing matter.</description>
+      <description>Judge Vince Chhabria granted Meta summary judgment, finding its use of authors’ books to train Llama “highly transformative” and that the authors had not shown market harm. He stressed the ruling was narrow, warning that AI training that significantly harms the market for original works would be hard to defend as fair use. Why it matters: Together with other 2025 rulings, it suggests AI training may be fair use but can lose on evidence of market harm. Creators’ records of lost sales and licensing matter.</description>
     </item>
     <item>
       <title>Disney and Universal sue Midjourney in the first major studio suit against an AI image generator</title>
@@ -202,7 +202,7 @@
       <pubDate>Fri, 09 May 2025 12:00:00 GMT</pubDate>
       <category>AI &amp; Copyright</category>
       <source url="https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-3-Generative-AI-Training-Report-Pre-Publication-Version.pdf">U.S. Copyright Office</source>
-      <description>The Office released a pre-publication version of Part 3, concluding that several stages of AI training implicate copyright owners' rights, that there is no blanket fair use for all training, and that fair use must be decided case by case. It favored letting voluntary licensing markets develop. Why it matters: It's the federal copyright agency's most detailed view on whether AI companies need permission to train on creative works, and courts and lawmakers are citing it.</description>
+      <description>The Office released a pre-publication version of Part 3, concluding that several stages of AI training implicate copyright owners’ rights, that there is no blanket fair use for all training, and that fair use must be decided case by case. It favored letting voluntary licensing markets develop. Why it matters: It’s the federal copyright agency’s most detailed view on whether AI companies need permission to train on creative works, and courts and lawmakers are citing it.</description>
     </item>
     <item>
       <title>Supreme Court limits trademark profit awards to named defendants (Dewberry v. Dewberry)</title>
@@ -211,7 +211,7 @@
       <pubDate>Wed, 26 Feb 2025 12:00:00 GMT</pubDate>
       <category>Trademark &amp; USPTO</category>
       <source url="https://www.supremecourt.gov/opinions/24pdf/23-900_19m1.pdf">Supreme Court of the United States</source>
-      <description>In a unanimous opinion by Justice Kagan, the Court held that “defendant's profits” under the Lanham Act covers only the named defendant — not unnamed corporate affiliates — throwing out an award of roughly $43 million built on affiliates' profits. Why it matters: In a trademark lawsuit, whom you name as defendants can decide how much you can recover.</description>
+      <description>In a unanimous opinion by Justice Kagan, the Court held that “defendant’s profits” under the Lanham Act covers only the named defendant — not unnamed corporate affiliates — throwing out an award of roughly $43 million built on affiliates’ profits. Why it matters: In a trademark lawsuit, whom you name as defendants can decide how much you can recover.</description>
     </item>
     <item>
       <title>U.S. Copyright Office releases Part 2 of its AI report: copyrightability</title>
@@ -220,34 +220,34 @@
       <pubDate>Wed, 29 Jan 2025 12:00:00 GMT</pubDate>
       <category>AI &amp; Copyright</category>
       <source url="https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf">U.S. Copyright Office</source>
-      <description>The Office concluded that purely AI-generated material is not protected and that prompts alone generally don't give enough control to make someone an author. Human-authored expression, creative selection and arrangement, and meaningful modifications of AI output can be protected. Why it matters: This is the practical rulebook for registering AI-assisted work: protection depends on the human contribution you can identify and disclose.</description>
+      <description>The Office concluded that purely AI-generated material is not protected and that prompts alone generally don’t give enough control to make someone an author. Human-authored expression, creative selection and arrangement, and meaningful modifications of AI output can be protected. Why it matters: This is the practical rulebook for registering AI-assisted work: protection depends on the human contribution you can identify and disclose.</description>
     </item>
     <item>
-      <title>California enacts AB 2602 and AB 1836 to protect performers' digital likenesses</title>
+      <title>California enacts AB 2602 and AB 1836 to protect performers’ digital likenesses</title>
       <link>https://www.gov.ca.gov/2024/09/17/governor-newsom-signs-bills-to-protect-digital-likeness-of-performers</link>
       <guid isPermaLink="false">california-ab-2602-ab-1836</guid>
       <pubDate>Tue, 17 Sep 2024 12:00:00 GMT</pubDate>
       <category>Right of Publicity</category>
       <source url="https://www.gov.ca.gov/2024/09/17/governor-newsom-signs-bills-to-protect-digital-likeness-of-performers">Office of California Governor Gavin Newsom</source>
-      <description>AB 2602 targets contract terms that allow digital replicas of a performer, requiring a reasonably specific description of the intended use and representation by a lawyer or union. AB 1836 bars commercial use of a deceased performer's digital replica without the estate's consent, with exceptions such as news, satire and parody. Why it matters: California performers should scrutinize AI and digital-replica clauses in their contracts, and estates of deceased performers gain control over AI recreations.</description>
+      <description>AB 2602 targets contract terms that allow digital replicas of a performer, requiring a reasonably specific description of the intended use and representation by a lawyer or union. AB 1836 bars commercial use of a deceased performer’s digital replica without the estate’s consent, with exceptions such as news, satire and parody. Why it matters: California performers should scrutinize AI and digital-replica clauses in their contracts, and estates of deceased performers gain control over AI recreations.</description>
     </item>
     <item>
-      <title>Supreme Court upholds ban on registering living people's names without consent (“Trump Too Small”)</title>
+      <title>Supreme Court upholds ban on registering living people’s names without consent (“Trump Too Small”)</title>
       <link>https://www.supremecourt.gov/opinions/23pdf/22-704_4246.pdf</link>
       <guid isPermaLink="false">vidal-v-elster</guid>
       <pubDate>Thu, 13 Jun 2024 12:00:00 GMT</pubDate>
       <category>Trademark &amp; USPTO</category>
       <source url="https://www.supremecourt.gov/opinions/23pdf/22-704_4246.pdf">Supreme Court of the United States</source>
-      <description>In Vidal v. Elster, the Court unanimously upheld the Lanham Act's “names clause,” which bars registering a mark that identifies a particular living person without that person's written consent. Why it matters: You generally can't federally register a brand containing a living person's name without their written consent — even as commentary or parody.</description>
+      <description>In Vidal v. Elster, the Court unanimously upheld the Lanham Act’s “names clause,” which bars registering a mark that identifies a particular living person without that person’s written consent. Why it matters: You generally can’t federally register a brand containing a living person’s name without their written consent — even as commentary or parody.</description>
     </item>
     <item>
-      <title>Tennessee enacts the ELVIS Act, the first state law protecting musicians' voices from AI cloning</title>
+      <title>Tennessee enacts the ELVIS Act, the first state law protecting musicians’ voices from AI cloning</title>
       <link>https://www.rollingstone.com/music/music-news/elvis-act-tennessee-signed-ai-impersonation-1234992395</link>
       <guid isPermaLink="false">tennessee-elvis-act</guid>
       <pubDate>Thu, 21 Mar 2024 12:00:00 GMT</pubDate>
       <category>Right of Publicity</category>
       <source url="https://www.rollingstone.com/music/music-news/elvis-act-tennessee-signed-ai-impersonation-1234992395">Rolling Stone</source>
-      <description>Governor Bill Lee signed the ELVIS Act, adding “voice” — both actual and simulated — to Tennessee's personal rights law, which already covered name, photograph and likeness. It took effect July 1, 2024. Why it matters: It was the first U.S. law aimed squarely at AI voice clones, and other states and Congress have followed with similar proposals.</description>
+      <description>Governor Bill Lee signed the ELVIS Act, adding “voice” — both actual and simulated — to Tennessee’s personal rights law, which already covered name, photograph and likeness. It took effect July 1, 2024. Why it matters: It was the first U.S. law aimed squarely at AI voice clones, and other states and Congress have followed with similar proposals.</description>
     </item>
   </channel>
 </rss>

@@ -14,7 +14,9 @@ const fontFaces = `@font-face{font-family:Fraunces;font-style:normal;font-weight
 @font-face{font-family:Fraunces;font-style:italic;font-weight:100 900;src:${await font("fraunces-latin-full-italic.woff2")}}
 @font-face{font-family:Manrope;font-weight:200 800;src:${await font("manrope-latin-wght-normal.woff2")}}`;
 
-const browser = await chromium.launch();
+// Bundled Chromium if installed, otherwise the system Chrome.
+const browser = await chromium.launch().catch(() => chromium.launch({ channel: "chrome" }));
+const portraitB64 = await readFile(path.join(img, "francine-portrait.jpg")).then((b) => b.toString("base64")).catch(() => null);
 const page = await browser.newPage();
 
 for (const [file, size] of [["favicon-32.png", 32], ["apple-touch-icon.png", 180], ["icon-512.png", 512]]) {
@@ -27,17 +29,20 @@ await page.setViewportSize({ width: 1200, height: 630 });
 await page.setContent(`<!doctype html><html><head>
 <style>
 ${fontFaces}
-body{margin:0;width:1200px;height:630px;background:#15122a;color:#fbf7f1;font-family:Manrope,sans-serif;position:relative;overflow:hidden}
-.b{position:absolute;border-radius:50%;filter:blur(90px)}
-.b1{width:620px;height:620px;left:620px;top:-200px;background:rgba(238,106,77,.75)}
-.b2{width:560px;height:560px;left:-160px;top:260px;background:rgba(107,79,216,.7)}
-.b3{width:400px;height:400px;left:420px;top:330px;background:rgba(201,161,74,.55)}
-.c{position:absolute;inset:0;padding:80px;display:flex;flex-direction:column;justify-content:space-between}
-.top{display:flex;align-items:center;gap:22px}.top svg{width:84px;height:84px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-.n{font-family:Fraunces,serif;font-size:40px}.t{font-size:15px;letter-spacing:.28em;text-transform:uppercase;opacity:.8;margin-top:6px}
-h1{font-family:Fraunces,serif;font-weight:400;font-size:76px;line-height:1.02;letter-spacing:-.02em;margin:0;max-width:900px}
-h1 em{color:#f3d98c}
+body{margin:0;width:1200px;height:630px;background:linear-gradient(180deg,#fff6ec,#fbf7f1);color:#15122a;font-family:Manrope,sans-serif;position:relative;overflow:hidden}
+.b{position:absolute;border-radius:50%;filter:blur(80px)}
+.b1{width:560px;height:560px;left:700px;top:-220px;background:rgba(255,154,118,.5)}
+.b2{width:520px;height:520px;left:-200px;top:300px;background:rgba(169,147,255,.38)}
+.b3{width:420px;height:420px;left:360px;top:360px;background:rgba(243,217,140,.6)}
+.c{position:absolute;inset:0;padding:72px 80px;display:flex;flex-direction:column;justify-content:space-between}
+.top{display:flex;align-items:center;gap:22px}.top svg{width:76px;height:76px;border-radius:18px;box-shadow:0 10px 26px -8px rgba(43,37,82,.5)}
+.n{font-family:Fraunces,serif;font-size:38px}.t{font-size:14px;letter-spacing:.28em;text-transform:uppercase;color:#4a4566;margin-top:6px}
+h1{font-family:Fraunces,serif;font-weight:400;font-size:60px;line-height:1.05;letter-spacing:-.02em;margin:0;max-width:620px}
+h1 em{color:#c24a2e}
+.p{position:absolute;right:80px;top:60px;width:372px;height:465px;border-radius:999px 999px 26px 26px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(43,37,82,.6);outline:1.5px solid rgba(201,161,74,.55);outline-offset:12px}
+.p img{width:100%;height:100%;object-fit:cover}
 </style></head><body><div class="b b1"></div><div class="b b2"></div><div class="b b3"></div>
+${portraitB64 ? `<div class="p"><img src="data:image/jpeg;base64,${portraitB64}"></div>` : ""}
 <div class="c"><div class="top">${svg}<div><div class="n">Francine D. Ward</div><div class="t">Attorney · Author · Speaker</div></div></div>
 <h1>Protect what you create.<br>Practice your <em>worth.</em></h1></div></body></html>`);
 await page.waitForLoadState("networkidle").catch(() => {});

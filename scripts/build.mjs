@@ -15,7 +15,8 @@ import { redirects } from "../src/data/redirects.mjs";
 const here = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(here, "..");
 const srcDir = path.join(rootDir, "src");
-const outDir = path.join(rootDir, "docs");
+// OUT_DIR lets you build somewhere else (e.g. to preview) without touching docs/.
+const outDir = process.env.OUT_DIR ? path.resolve(process.env.OUT_DIR) : path.join(rootDir, "docs");
 // Cache-busting token that only changes when the CSS/JS actually change.
 const version = createHash("sha1")
   .update(await readFile(path.join(srcDir, "assets/css/main.css")))
@@ -51,7 +52,7 @@ function redirectPage(from, to) {
 <html lang="en"><head><meta charset="utf-8">
 <title>Redirecting… | ${esc(site.name)}</title>
 <meta name="robots" content="noindex">
-<link rel="canonical" href="${site.url}/${to}">
+<link rel="canonical" href="${site.url}/${to.split(/[?#]/)[0]}">
 <meta http-equiv="refresh" content="0; url=${target}">
 <script>location.replace(${JSON.stringify(target)}${to.includes("#") ? "" : " + location.hash"})</script>
 </head><body style="font-family:system-ui;background:#15122a;color:#fbf7f1;display:grid;place-items:center;min-height:100vh;margin:0">
@@ -130,7 +131,7 @@ async function build() {
   await write(".nojekyll", "");
   if (existsSync(path.join(rootDir, "CNAME"))) await cp(path.join(rootDir, "CNAME"), path.join(outDir, "CNAME"));
 
-  console.log(`Built ${pages.length} pages + ${Object.keys(redirects).length} redirects → docs/`);
+  console.log(`Built ${pages.length} pages + ${Object.keys(redirects).length} redirects → ${path.relative(rootDir, outDir) || "."}/`);
 }
 
 build().catch((err) => {
